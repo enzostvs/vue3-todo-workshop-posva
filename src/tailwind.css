@@ -16,5 +16,6 @@ body {
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
+  position: absolute;
   transform: translateY(30px);
 }
