@@ -11,7 +11,7 @@ const useTodo = defineStore('todo', {
     }
   },
   getters: {
-    all: state => state.todos,
+    all: state => state.todos.sort((a, b) => a.isFinished - b.isFinished),
     finished: state => state.todos.filter(t => t.isFinished),
     unfinished: state => state.todos.filter(t => !t.isFinished),
   },

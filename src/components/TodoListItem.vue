@@ -1,17 +1,18 @@
 <template>
   <div
+    :class="{ 'opacity-50': todo.isFinished }"
     class="px-5 py-4 rounded-2xl bg-gray-800"
     @dblclick="handleEditing"
   >
     <div v-show="!isUpdating" class="flex items-start">
       <input
-        v-model="todo.isFinished"
+        v-model="todoEditable.isFinished"
         type="checkbox"
         class="focus:ring-pink-500 h-5 w-5 text-pink-600 rounded-lg bg-transparent border-pink-500 border-2 outline-none transform translate-y-1"
       />
       <div class="ml-4 w-full">
-        <p class="text-gray-200 font-medium">{{ todo.content }}</p>
-        <p class="text-sm text-gray-600 mt-1 flex items-center">
+        <p :class="{ 'line-through': todo.isFinished }" class="text-gray-200 font-medium">{{ todo.content }}</p>
+        <p :class="{ 'line-through': todo.isFinished }" class="text-sm text-gray-600 mt-1 flex items-center">
           <CalendarIcon class="w-4 mr-1" />
           {{ $dayjs(todo._id).format('dddd') }}
         </p>
@@ -53,7 +54,7 @@ export default defineComponent({
 
     const store = useTodo()
 
-    watch(todo, newTodo => {
+    watch(todoEditable.value, newTodo => {
       if (newTodo.isFinished !== todo.isFinished) update(newTodo as TodoItem)
     })
 
