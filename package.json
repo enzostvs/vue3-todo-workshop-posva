@@ -10,7 +10,7 @@
     "dayjs": "^1.10.7",
     "pinia": "^2.0.9",
     "vue": "^3.2.27",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.4.3",
